@@ -40,3 +40,11 @@ class CheckingAccount(Account):
 class SavingAccount(Account):
     def __init__(self, account_id, first_name, last_name, password, balance=0):
         super().__init__(account_id, first_name, last_name, password, balance)
+
+
+
+while True:
+    print("\n1. Create Account")
+    print("2.Login")
+    print("3. Exit")
+    choice = input("Enter choice: ")

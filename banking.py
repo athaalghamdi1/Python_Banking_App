@@ -1,50 +1,50 @@
 import csv
 
+BankFile = "bank.csv"
 
 class Account:
-    def init(self, account_id, first_name, last_name, password, balance=0 ):
-       self.account_id=account_id
-       self.first_name=first_name
-       self.last_name=last_name
-       self.password=password
-       self.balance = balance
+    def __init__(self, balance_checking=0.0, balance_savings=0.0):
+        self.balance_checking = balance_checking
+        self.balance_savings = balance_savings
 
-    def deposit(self, amount):
+    def deposit(self, amount, account_type="checking"):
         if amount > 0:
-            self.balance += amount
-            print(f"Deposited ${amount}. New Balance: ${self.balance}")
+            if account_type == "checking":
+                self.balance_checking += amount
+            else:
+                self.balance_savings += amount
+            print(f"${amount} deposited into {account_type} account.")
         else:
-            print("Invalid deposit amount!")
+            print("Deposit amount must be positive.")
 
-    def withdraw(self, amount):
-        if amount > 0 and self.balance - amount >= -100:
-            if self.balance < 0 and amount > 100:
-                print("Transaction denied: Cannot withdraw more than $100 when account is negative.")
-                return
-            self.balance -= amount
-            if self.balance < 0:
-             print(f"Withdrew ${amount}. New Balance: ${self.balance}")
+    def withdraw(self, amount, account_type="checking"):
+        if amount <= 0:
+            print("Withdrawal amount must be positive.")
+            return
+
+        if account_type == "checking":
+            if amount > self.balance_checking:
+                print("Insufficient funds in checking account.")
+            elif self.balance_checking - amount < -100:
+                print("Cannot withdraw, balance cannot be less than -$100.")
+            else:
+                self.balance_checking -= amount
+                print(f"${amount} withdrawn from checking account.")
         else:
-            print(f"Withdraw failed! Current balance: ${self.balance}, cannot withdraw ${amount}.")
+            if amount > self.balance_savings:
+                print("Insufficient funds in savings account.")
+            else:
+                self.balance_savings -= amount
+                print(f"${amount} withdrawn from savings account.")
 
-    def get_balance(self):
-        return self.balance
-    
-    
-    
+class Customer:
+    def __init__(self, account_id, first_name, last_name, password, balance_checking=0.0, balance_savings=0.0):
+        self.account_id = account_id
+        self.first_name = first_name
+        self.last_name = last_name
+        self.password = password
+        self.account = Account(balance_checking, balance_savings)
 
-class CheckingAccount(Account):
-    def __init__(self, account_id, first_name, last_name, password, balance=0):
-        super().__init__(account_id, first_name, last_name, password, balance)
-
-class SavingAccount(Account):
-    def __init__(self, account_id, first_name, last_name, password, balance=0):
-        super().__init__(account_id, first_name, last_name, password, balance)
-
-
-
-while True:
-    print("\n1. Create Account")
-    print("2.Login")
-    print("3. Exit")
-    choice = input("Enter choice: ")
+class Bank:
+    def __init__(self):
+        self.customers = self.customer_data() 

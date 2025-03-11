@@ -3,7 +3,7 @@ import csv
 BankFile = "bank.csv"
 
 class Account:
-    def __init__(self, balance_checking=0.0, balance_savings=0.0):
+    def __init__(self, balance_checking=0, balance_savings=0):
         self.balance_checking = balance_checking
         self.balance_savings = balance_savings
 
@@ -37,14 +37,61 @@ class Account:
                 self.balance_savings -= amount
                 print(f"${amount} withdrawn from savings account.")
 
-class Customer:
-    def __init__(self, account_id, first_name, last_name, password, balance_checking=0.0, balance_savings=0.0):
+    def transfer(self, amount, from_account="checking"):
+        if amount <= 0:
+            print("Transfer amount must be positive.")
+            return
+
+        if from_account == "checking":
+            if amount > self.balance_checking:
+                print("Insufficient funds in checking account.")
+            else:
+                self.balance_checking -= amount
+                self.balance_savings += amount
+                print(f"${amount} transferred from checking to savings.")
+        else:
+            if amount > self.balance_savings:
+                print("Insufficient funds in savings account.")
+            else:
+                self.balance_savings -= amount
+                self.balance_checking += amount
+                print(f"${amount} transferred from savings to checking.")
+
+class Customer(Account):
+    def __init__(self, account_id, first_name, last_name, password, balance_checking=0, balance_savings=0):
+        super().__init__(balance_checking, balance_savings) 
         self.account_id = account_id
         self.first_name = first_name
         self.last_name = last_name
         self.password = password
-        self.account = Account(balance_checking, balance_savings)
-
+        
 class Bank:
     def __init__(self):
-        self.customers = self.customer_data() 
+        self.customers = self.customer_data()
+
+    def customer_data(self):
+        customers = {}
+        try:
+            with open(BankFile, mode="r") as file:
+                reader = csv.reader(file)
+                next(reader)  
+                for row in reader:
+                    if len(row) == 6:
+                        customers[row[0]] = Customer(row[0], row[1], row[2], row[3], float(row[4]), float(row[5]))
+        except FileNotFoundError:
+            print("Error: bank.csv file not found.")
+        return customers 
+
+    def save_customer(self, customer):
+        customers_list = []
+        try:
+            with open(BankFile, mode="r") as file:
+                reader = csv.reader(file)
+                next(reader)  
+                for row in reader:
+                    if row[0] == customer.account_id:
+                        row[4] = str(customer.balance_checking)
+                        row[5] = str(customer.balance_savings)
+                    customers_list.append(row)
+        except FileNotFoundError:
+            print("Error: bank.csv file not found.")

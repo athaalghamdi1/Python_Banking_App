@@ -95,19 +95,4 @@ class Bank:
                     customers_list.append(row)
         except FileNotFoundError:
             print("Error: bank.csv file not found.")
-
-        with open(BankFile, mode="w", newline="") as file:
-            writer = csv.writer(file)
-            writer.writerow(["Account ID", "First Name", "Last Name", "Password", "Checking Balance", "Savings Balance"])  
-            writer.writerows(customers_list)
-    def create_account(self, account_id, first_name, last_name, password, deposit_checking=0, deposit_savings=0):
-        if account_id in self.customers:
-            print("Account ID already exists. Please choose a different one.")
-            return None
-        new_customer = Customer(account_id, first_name, last_name, password, 0, 0)
-        self.customers[account_id] = new_customer
-        new_customer.deposit(deposit_checking, "checking")
-        new_customer.deposit(deposit_savings, "savings")
-        self.save_customer(new_customer)
-        print("Account created successfully!")
-        return new_customer
+            

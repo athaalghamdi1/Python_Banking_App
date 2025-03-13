@@ -28,13 +28,13 @@ This is a **Python Banking Project** developed in Python. The system allows cust
 ## Challenges & Key Takeaways 
 
 ## Challenges: 
-1- Handling **overdraft scenarios** and **account deactivation/reactivation** properly. 
+- Handling **overdraft scenarios** and **account deactivation/reactivation** properly. 
 
-2- Maintaining accurate **data persistence using CSV** files while supporting multiple customers. 
+- Maintaining accurate **data persistence using CSV** files while supporting multiple customers. 
 
-3-Creating a **secure login** and validating user input effectively. 
+-Creating a **secure login** and validating user input effectively. 
 
-4-Designing an **intuitive command-line menu system** for users to interact with. 
+-Designing an **intuitive command-line menu system** for users to interact with. 
 
 ## Key Takeaways: 
 Learned how to design and implement **OOP systems in Python** effectively. 

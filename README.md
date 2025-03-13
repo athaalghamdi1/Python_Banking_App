@@ -23,7 +23,7 @@ This is a **Python Banking Project** developed in Python. The system allows cust
 | **Transfer between own accounts**          | Transfer funds between checking and savings accounts |
 | **Transfer to other customer**             | Send money to another customer's account          |
 | **Account Info**                           | Display customer’s account balances and overdraft counts |
-| **Account Deactivation/Overdraft**         | Account deactivates after 3 overdrafts, can be reactivated by deposit |
+| **Account Deactivation/Overdraft**         | Account deactivates after 2 overdrafts, can be reactivated by deposit |
 
 ## Challenges & Key Takeaways 
 

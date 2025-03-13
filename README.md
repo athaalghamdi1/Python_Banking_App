@@ -32,9 +32,9 @@ This is a **Python Banking Project** developed in Python. The system allows cust
 
 - Maintaining accurate **data persistence using CSV** files while supporting multiple customers. 
 
--Creating a **secure login** and validating user input effectively. 
+- Creating a **secure login** and validating user input effectively. 
 
--Designing an **intuitive command-line menu system** for users to interact with. 
+- Designing an **intuitive command-line menu system** for users to interact with. 
 
 ## Key Takeaways: 
 Learned how to design and implement **OOP systems in Python** effectively. 
@@ -43,16 +43,16 @@ Improved understanding of **error handling and validation**.
 Practiced writing **modular and maintainable code**. 
 
 ## IceBox Features (Future Work) 
--Graphical User Interface (GUI) to improve user experience. 
+- Graphical User Interface (GUI) to improve user experience. 
 
--Admin dashboard to monitor all customer accounts and transactions.
+- Admin dashboard to monitor all customer accounts and transactions.
 
--Transaction history logs for each customer. 
+- Transaction history logs for each customer. 
 
--Password reset and account recovery system. 
+- Password reset and account recovery system. 
 
--Email notifications for transactions and account activities. 
+- Email notifications for transactions and account activities. 
 
--Interest calculation system for savings accounts. 
+- Interest calculation system for savings accounts. 
 
--Loan request and approval management.
+- Loan request and approval management.

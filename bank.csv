@@ -1,4 +1,10 @@
-10002;james;taylor;idh36%@#FGd;10000;10000
-10003;melvin;gordon;uYWE732g4ga1;2000;20000
-10004;stacey;abrams;DEU8_qw3y72$;2000;20000
-10005;jake;paul;d^dg23g)@;100000;100000
+customer_id;first_name;last_name;password;checking_balance;savings_balance
+2007;mh;mh;2007;10000;1000
+2009;er;er;20009;1000;10000
+2345;deemo;al;2345;1200;1000
+10001;suresh;sigera;juagw362;1000;1100
+2000;sara;alm;2000;1400;900
+3000;amooly;alghamdi;3000;900;860
+2003;Atha;Alghamdi;Ath2ath;100300;10000
+1121753972;Atha;Alghamdi;2003;9500;10101
+1212;ASD;ASD;1234;12345;1234

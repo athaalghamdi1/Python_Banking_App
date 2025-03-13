@@ -24,11 +24,17 @@ class Account:
         if self.balance - amount < 0:
             self.overdraft_count += 1
             self.balance -= 35
+            self.balance -= amount
             print(f"Overdraft! Charged $35. Balance is now ${self.balance}")
+            if self.balance <= -100:
+                self.balance += amount
+                print(f"Overdraft protection exceeded! Transaction reversed. Balance is now {self.balance}")
+                return
             if self.overdraft_count > 2:
                 self.deactivated = True
                 print("Account deactivated due to excessive overdrafts.")
             return False
+            
         self.balance -= amount
         print(f"Withdrawn ${amount}. New balance: ${self.balance}")
         return True
@@ -124,7 +130,7 @@ class BankSystem(Bank):
     def main_menu(self):
         while True:
             print("\n *** \U0001F3E6 Welcome to the Bank \U0001F3E6 *** ")
-            print("1. Add Customer")
+            print("1. Add Customer") 
             print("2. Login")
             print("3. Exit")
             choice = input("Please Choose one of the following option: ")
@@ -164,16 +170,32 @@ class BankSystem(Bank):
             choice = input("Please Choose one of the following option: ")
             if choice == "1":
                 acc = input("From (checking | savings): ")
-                amount = int(input("Amount: "))
-                account = customer.checking if acc == "checking" else customer.savings
-                account.withdraw(amount)
-                self.save_customers()
+                if acc == "checking":
+                    amount = int(input("Amount: "))
+                    account = customer.checking 
+                    account.withdraw(amount)
+                    self.save_customers()
+                elif acc == "savings":
+                    amount = int(input("Amount: "))
+                    account = customer.savings
+                    account.withdraw(amount)
+                    self.save_customers()
+                else:
+                    print('Error, invalid input.')
             elif choice == "2":
                 acc = input("To (checking | savings): ")
-                amount = int(input("Amount: "))
-                account = customer.checking if acc == "checking" else customer.savings
-                account.deposit(amount)
-                self.save_customers()
+                if acc == "checking":
+                    amount = int(input("Amount: "))
+                    account = customer.checking 
+                    account.deposit(amount)
+                    self.save_customers()
+                elif acc == "savings":
+                    amount = int(input("Amount: "))
+                    account = customer.savings
+                    account.deposit(amount)
+                    self.save_customers()
+                else:
+                    print('Error, invalid input.')
             elif choice == "3":
                 from_acc = input("From (checking | savings): ")
                 to_acc = input("To (checking | savings): ")

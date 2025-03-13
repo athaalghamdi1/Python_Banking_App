@@ -5,7 +5,7 @@ This is a **Python Banking Project** developed in Python. The system allows cust
 
 
 ## Technologies Used 
-**Python 3** 
-**CSV file handling** for data storage 
-**Object-Oriented Programming (OOP)** for system design 
-**Console-based User Interface** for interaction  
+**1- Python 3** 
+**2- CSV file handling** for data storage 
+**3- Object-Oriented Programming (OOP)** for system design 
+**4- Console-based User Interface** for interaction  
